@@ -1,0 +1,78 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  font-family: "Nunito", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #3c3756;
+  margin: 0;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .banner-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .user-container {
+    width: 100%;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+#button:disabled {
+  background-color: #f2f2f9;
+  color: #9795a5;
+}
+
+.apple-auth-btn {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
