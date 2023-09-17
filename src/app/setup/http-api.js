@@ -7,7 +7,7 @@ const accessToken = TokenService.getAccessToken();
 export const instance = axios.create({
   baseURL: "http://ec2-3-76-80-33.eu-central-1.compute.amazonaws.com/",
   headers: {
-    Authorization: `${accessToken}`,
+    Authorization: `Bearer ${accessToken}`,
     "Content-Type": "application/json",
     Accept: "*/*",
   },
@@ -15,7 +15,7 @@ export const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    config.headers["Authorization"] = `${accessToken}`;
+    config.headers["Authorization"] = `Bearer ${accessToken}`;
   
     return config;
   },

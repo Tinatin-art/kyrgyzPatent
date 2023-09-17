@@ -1,18 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom'
+import { getCategories } from './store/SidebarSlice';
 
 const Sidebar = () => {
+
+  const dispatch = useDispatch();
+
+  const category  = useSelector((state) => ({
+    ...state?.categories
+  
+  }));
+
+  console.log(category)
+
+
+  useEffect(() => {
+
+      dispatch(getCategories());
+   
+  }, []);
+
+
+
   return (
     <ul className='sidebar'>
-        <NavLink NavLink to={"/"}
-        className="sidebar-link"
-        >Товарные знаки</NavLink>
-        <NavLink NavLink to={"/tims"}
-        className="sidebar-link"
-        >Топология интегральных микросистем (ТИМС)</NavLink>
-        <NavLink NavLink to={"/nmpt"}
-        className="sidebar-link"
-        >Товарные знаки</NavLink>
+      {
+          category?.category.map((item, key) => (
+              <NavLink to={"/"}
+                key={key}
+                className="sidebar-link"
+              >{item.name}</NavLink>
+          ))
+      }
     </ul>
   )
 }
