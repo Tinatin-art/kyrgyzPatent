@@ -22,3 +22,14 @@
       align-items: center;
     }
 }
+
+.card {
+  position: relative;
+  margin: 20px 0;
+  width: 200px;
+  padding: 20px;
+  box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  border: 0;
+  color: black;
+}
