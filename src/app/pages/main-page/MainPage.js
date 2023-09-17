@@ -30,9 +30,6 @@ const MainPage = () => {
 //  onAfterPrint: () => console.log('Printed PDF successfully!'),
 // });
 
-
-
-
   return (
     <div>
         <Header/>

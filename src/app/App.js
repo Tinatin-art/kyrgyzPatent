@@ -1,24 +1,17 @@
-import '../style/App.css';
 import '../style/main.scss'
-import {
-  Route,
-  Routes
-} from 'react-router-dom';
-import MainPage from './pages/main-page/MainPage';
-import TimsPage from './pages/tims/TimsPage';
-import SignIn from './auth/SignIn';
+import withAppProviders from './withAppProviders';
+import BrowserRouter from './router/core/BrowserRouter';
+import Layout from './router/Layout';
 
+const App = () => {
 
-function App() {
   return (
     <>
-    <Routes>
-        <Route path='/' element={<MainPage/>}/>
-        <Route path='/signin' element={<SignIn/>}/>
-        <Route path='/tims' element={<TimsPage/>}/>
-      </Routes>
+      <BrowserRouter>
+        <Layout/>
+      </BrowserRouter>
     </>
   );
 }
 
-export default App;
+export default withAppProviders(App)();

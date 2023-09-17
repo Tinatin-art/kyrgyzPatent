@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 const Header = () => {
+
   return (
     <header className='container'>
         <div className="header__menu">
@@ -17,8 +18,8 @@ const Header = () => {
                     <i className="search-icon"></i>
                 </label>
                 <div className="user-auth-btn">
-                    <Link className="user-auth-link" to="/signin">Войти</Link>
-                    <Link className="user-auth-link" to="/">Регистрация</Link>
+                    <span className="user-auth-link">User</span>
+                    <Link className="user-auth-link" to="/signin">Выйти</Link>
                 </div>
             </div>
         </div>
