@@ -1,5 +1,6 @@
 import React from "react";
 import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 
 const AuthConfig = {
@@ -7,6 +8,10 @@ const AuthConfig = {
     {
       path: "/signin",
       element: <SignIn />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
     },
   ],
 };

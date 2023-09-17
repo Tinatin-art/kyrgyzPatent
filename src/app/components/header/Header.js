@@ -1,10 +1,22 @@
 import React from 'react'
 import logo from "../../../assets/images/logo.png";
 import {
-    Link
+    useNavigate
 } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import tokenService from '../../setup/token-service';
 
 const Header = () => {
+    const user = Cookies.get("role")
+
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        setTimeout(() => {
+          tokenService.logOut();
+          navigate("/signin");
+        }, 500);
+      };
 
   return (
     <header className='container'>
@@ -18,8 +30,9 @@ const Header = () => {
                     <i className="search-icon"></i>
                 </label>
                 <div className="user-auth-btn">
-                    <span className="user-auth-link">User</span>
-                    <Link className="user-auth-link" to="/signin">Выйти</Link>
+                    
+                    <span className="user-auth-link">{user}</span>
+                    <button className="user-auth-link" onClick={handleLogout}>Выйти</button>
                 </div>
             </div>
         </div>

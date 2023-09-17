@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom'
+import { signIn } from './store/AuthSlice';
 
 const SignIn = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [emails, setEmails] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -14,40 +18,57 @@ const SignIn = () => {
 
     const handleShowPassword = () => {
         setShowPassword(!showPassword);
-      };
+    };
+        const handlePassword = (e) => {
+      setPassword(e.target.value);
+    };
+
+    let userData = {
+      email: emails,
+      password: password,
+    };
+
+    const signInUser = () => {
+        dispatch(signIn(userData))
+          .unwrap()
+          .then((res) => {
+            if (res && res.status === 200) {
+              navigate(`/patent`);
+            }
+          });
+        setEmails("");
+        setPassword("");
+    };
     
-      const handlePassword = (e) => {
-        setPassword(e.target.value);
-      };
     
     return (
 
     <div className='container'>
-        <div class="auth">
-                <h1 class="auth-ttl">Войдите в свой аккаунт</h1>
-                <div class="auth-inner">
-                    <form class="auth-form">
-                        <div class="auth-up">
-                            <label for="auth-email" class="auth-label">Email</label>
+        <div className="auth">
+                <h1 className="auth-ttl">Войдите в свой аккаунт</h1>
+                <div className="auth-inner">
+                    <form className="auth-form">
+                        <div className="auth-up">
+                            <label htmlFor="auth-email" className="auth-label">Email</label>
                             <input 
                                 onChange={handleEmail}
                                 name="emails"
                                 type="email"
                                 value={emails}
-                                class="auth-input" 
+                                className="auth-input" 
                                 id="auth-email" 
                                 placeholder="Введите email"
                                 autoFocus={true}
                             />
                         </div>
-                        <div class="auth-up">
-                            <label for="auth-password" class="auth-label">Пароль</label>
+                        <div className="auth-up">
+                            <label htmlFor="auth-password" className="auth-label">Пароль</label>
                             <input 
                                 onChange={handlePassword}
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 value={password}
-                                class="auth-input" 
+                                className="auth-input" 
                                 id="auth-password" 
                                 placeholder="Введите пароль"
                             />
@@ -55,7 +76,7 @@ const SignIn = () => {
                                 onClick={handleShowPassword}></div>
                         </div>
                         <div className="auth-link">
-                            <p className="auth-link-title">Don't have an account?</p>
+                            <p className="auth-link-title">У вас нет учетной записи?</p>
                             <Link
                                 to={"/signup"}
                                 className="auth-link-btn"
@@ -63,7 +84,7 @@ const SignIn = () => {
                               Зарегистрироваться
                             </Link>
                         </div>
-                        <button type="submit" class="auth-btn">Войти</button>
+                        <button type="button" className="auth-btn" onClick={signInUser}>Войти</button>
                     </form>
                 </div>
             </div>
