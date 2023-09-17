@@ -17,7 +17,7 @@ const Header = () => {
                     <i className="search-icon"></i>
                 </label>
                 <div className="user-auth-btn">
-                    <Link className="user-auth-link" to="/">Войти</Link>
+                    <Link className="user-auth-link" to="/signin">Войти</Link>
                     <Link className="user-auth-link" to="/">Регистрация</Link>
                 </div>
             </div>
